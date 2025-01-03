@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychologist in Budapest | Dialog Center | Hungary</title>
+</head>
+<body>
+
+    <!--menu-->
+    <body>
+        <header class="header">
+            <div class="container header__container">
+                <button class="header__burger-btn" id="burger">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="#" class="logo">
+                    <img class="logo__img" src="img/logo.svg" alt="Логотип">
+                </a>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li class="menu__item"><a class="menu__link col" href="index.html#Home">Home</a></li>
+                        <li class="menu__item"><a class="menu__link col" href="index.html#Services">Services</a></li>
+                        <li class="menu__item"><a class="menu__link col" href="index.html#about">About</a></li>
+                        <li class="menu__item"><a class="menu__link col" href="index.html#info">Info</a></li>
+                        <li class="menu__item"><a class="menu__link col" href="index.htmlНа самом деле язык был назван в честь ТВ-шоу «Летающий цирк Монти Пайтона», поклонником которого был его создатель Гвидо ван Россум! Однако большинство людей продолжают ассоциировать язык не с комиками, а рептилиями. Не последнюю роль в этом играет изображение змей на логотипе, который, кстати, придумал брат Гвидо, Юст ван Россум.#address">Address</a></li>
+                        <li class="menu__item"><a class="menu__link col" href="index.html#faq">Faq</a></li>
+                        <li class="menu__item"><a style="color: #42B2FC;" class="menu__link col" href="contact.html">Contact me</a></li>
+                        <button class="menu_btn">Call me</button>
+                    </ul>
+                </nav>
+            </div>
+    </header>
+    <!--end-->
+
+
+    <div style="padding-top: 100px;" class="container">
+        <p class="contact_p">
+            Your mental health and well-being is important to me. I love helping my patients develop the tools they need to cope with all of life’s challenges, and I get great satisfaction from seeing them heal and thrive. Contact me today to see how I can help you and let’s discuss the wide range of options at your disposal.
+        </p>
+    </div>
+
+
+    <div class="contact_container">
+        <div class="contact_box">
+            <form id="contactForm" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message"></textarea>
+                <button class="contact_btn" type="submit">Send</button>
+            </form>
+            
+            <div id="thankYouModal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <h2>Thank you for being with us, wait, we will contact you soon</h2>
+                </div>
+            </div>
+            
+            <script>
+                document.getElementById('contactForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(this);
+            
+                    fetch('send.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+            
+                        const modal = document.getElementById('thankYouModal');
+                        modal.style.display = 'flex';
+            
+                        document.querySelector('.modal-close').onclick = function() {
+                            modal.style.display = 'none';
+                        };
+            
+                     
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = 'none';
+                            }
+                        };
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            
+
+                window.onload = function() {
+                    document.getElementById('thankYouModal').style.display = 'none';
+                };
+            </script>
+        </div>
+    </div>
+
+
+    <a href="#">
+        <button id="toTop">
+            <svg fill="#fff" width="25"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/></svg>
+        </button>
+    </a>
+    
+
+
+    <br><br><br><br><br>
+
+
+    <footer class="footer_container">
+        <div class="footer_box">
+            <p>&copy; 2024 - All rights reserved</p>
+        </div>
+    </footer>
+
+
+    
+
+
+
+    <script src="js/main.js"></script>
+</body>
+</html>
